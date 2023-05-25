@@ -1,4 +1,4 @@
-package com.saluddigital.cerroverde;
+package com.saluddigital.cerroverde.logic;
 
 import java.time.LocalDate;
 
