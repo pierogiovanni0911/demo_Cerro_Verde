@@ -2,6 +2,7 @@ package com.saluddigital.cerroverde.logic;
 
 import java.time.LocalDate;
 
+// Clase padre
 public abstract class Persona {
     
     private int id;
@@ -20,7 +21,21 @@ public abstract class Persona {
     private LocalDate fechaNacimiento;
 
     public Persona() {
-    }    
+        id = 0;
+        documento = "";
+        seguroSocial = "";
+        primerNombre = "";
+        segundoNombre = "";
+        apellidoPaterno = "";
+        apellidoMaterno = "";
+        sexo = "";
+        telefono = "";
+        correoElectronico = "";
+        direccion = "";
+        nacionalidad = "";
+        estadoCivil = "";
+        fechaNacimiento = LocalDate.now();
+    }
 
     public Persona(int id, String documento, String seguroSocial, String primerNombre, String segundoNombre,
             String apellidoPaterno, String apellidoMaterno, String sexo, String telefono, String correoElectronico,
