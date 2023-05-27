@@ -1,4 +1,4 @@
-package com.saluddigital.cerroverde.logic;
+package com.saluddigital.cerroverde.model;
 
 import java.time.LocalDate;
 
@@ -9,21 +9,13 @@ public class Empleado extends Persona{
     private String cargo;
     private String correoCentroSalud;
 
-    public Empleado() {
-        super();
-        idEmpleado = 0;
-        fechaIngreso = LocalDate.now();
-        area = "";
-        cargo = "";
-        correoCentroSalud = "";
-    }
-
     public Empleado(int idEmpleado, LocalDate fechaIngreso, String area, String cargo, 
-                    String correoCentroSalud, int idPersona, String nombres, String apellidos, 
-                    String tipoDocumento, String numeroDocumento, String sexo, LocalDate fechaNacimiento, 
-                    String direccion, String telefono, String correo) {
-        super(idPersona, tipoDocumento, numeroDocumento, nombres, nombres, apellidos, apellidos, sexo, 
-        telefono, correo, direccion, telefono, correo, fechaNacimiento);
+                    String correoCentroSalud, int idPersona, String documento, String seguroSocial,
+                    String primerNombre, String segundoNombre, String apellidoPaterno, String apellidoMaterno,
+                    String sexo, String telefono, String correoElectronico, String direccion, String nacionalidad,
+                    String estadoCivil, LocalDate fechaNacimiento) {
+        super(idPersona, documento, seguroSocial, primerNombre, segundoNombre, apellidoPaterno, apellidoMaterno, 
+                sexo, telefono, correoElectronico, direccion, nacionalidad, estadoCivil, fechaNacimiento);
         this.idEmpleado = idEmpleado;
         this.fechaIngreso = fechaIngreso;
         this.area = area;

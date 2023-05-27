@@ -1,4 +1,4 @@
-package com.saluddigital.cerroverde.logic;
+package com.saluddigital.cerroverde.model;
 
 import java.time.LocalDate;
 
@@ -12,24 +12,13 @@ public class Paciente extends Persona {
     private String condicion;
     private String grupoSanguineo;
 
-    public Paciente() {
-        super();
-        idPaciente = 0;
-        idHistoria = 0;
-        antecedentesPersonales = "";
-        antecedentesFamiliares = "";
-        antecedentesObstetricos = "";
-        habitos = "";
-        condicion = "";
-        grupoSanguineo = "";
-    }
-
     public Paciente(int idPaciente, int idHistoria, String antecedentesPersonales, String antecedentesFamiliares,
-            String antecedentesObstetricos, String habitos, String condicion, String grupoSanguineo, int idPersona,
-            String tipoDocumento, String numeroDocumento, String nombres, String apellidos, String sexo,
-            LocalDate fechaNacimiento, String direccion, String telefono, String correo) {
-        super(idPersona, tipoDocumento, numeroDocumento, nombres, nombres, apellidos, apellidos, sexo, telefono,
-                correo, direccion, telefono, correo, fechaNacimiento);
+            String antecedentesObstetricos, String habitos, String condicion, String grupoSanguineo, int idPersona, 
+            String documento, String seguroSocial, String primerNombre, String segundoNombre, String apellidoPaterno,
+            String apellidoMaterno, String sexo, String telefono, String correoElectronico, String direccion,
+            String nacionalidad, String estadoCivil, LocalDate fechaNacimiento) {
+        super(idPersona, documento, seguroSocial, primerNombre, segundoNombre, apellidoPaterno, apellidoMaterno, sexo,
+                telefono, correoElectronico, direccion, nacionalidad, estadoCivil, fechaNacimiento);
         this.idPaciente = idPaciente;
         this.idHistoria = idHistoria;
         this.antecedentesPersonales = antecedentesPersonales;
@@ -104,6 +93,11 @@ public class Paciente extends Persona {
         this.grupoSanguineo = grupoSanguineo;
     }
 
-
-    
+    @Override
+    public String toString(){
+        return "Paciente{" + "idPaciente=" + idPaciente + ", idHistoria=" + idHistoria + 
+            ", antecedentesPersonales=" + antecedentesPersonales + ", antecedentesFamiliares=" + antecedentesFamiliares + 
+            ", antecedentesObstetricos=" + antecedentesObstetricos + ", habitos=" + habitos + ", condicion=" + condicion +
+            ", grupoSanguineo=" + grupoSanguineo + '}';
+    }
 }

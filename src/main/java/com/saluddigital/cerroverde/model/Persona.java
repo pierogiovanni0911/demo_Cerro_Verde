@@ -1,11 +1,11 @@
-package com.saluddigital.cerroverde.logic;
+package com.saluddigital.cerroverde.model;
 
 import java.time.LocalDate;
 
 // Clase padre
 public abstract class Persona {
     
-    private int id;
+    private int idPersona;
     private String documento;
     private String seguroSocial;
     private String primerNombre;
@@ -20,27 +20,10 @@ public abstract class Persona {
     private String estadoCivil;
     private LocalDate fechaNacimiento;
 
-    public Persona() {
-        id = 0;
-        documento = "";
-        seguroSocial = "";
-        primerNombre = "";
-        segundoNombre = "";
-        apellidoPaterno = "";
-        apellidoMaterno = "";
-        sexo = "";
-        telefono = "";
-        correoElectronico = "";
-        direccion = "";
-        nacionalidad = "";
-        estadoCivil = "";
-        fechaNacimiento = LocalDate.now();
-    }
-
-    public Persona(int id, String documento, String seguroSocial, String primerNombre, String segundoNombre,
+    public Persona(int idPersona, String documento, String seguroSocial, String primerNombre, String segundoNombre,
             String apellidoPaterno, String apellidoMaterno, String sexo, String telefono, String correoElectronico,
             String direccion, String nacionalidad, String estadoCivil, LocalDate fechaNacimiento) {
-        this.id = id;
+        this.idPersona = idPersona;
         this.documento = documento;
         this.seguroSocial = seguroSocial;
         this.primerNombre = primerNombre;
@@ -56,11 +39,11 @@ public abstract class Persona {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public int getId() {
-        return id;
+    public int getIdPersona() {
+        return idPersona;
     }
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int idPersona) {
+        this.idPersona = idPersona;
     }
     public String getDocumento() {
         return documento;
@@ -153,7 +136,7 @@ public abstract class Persona {
     @Override
     public String toString() {
     return "Persona{" +
-            "id=" + id +
+            "idPersona=" + idPersona +
             ", documento='" + documento + '\'' +
             ", seguroSocial='" + seguroSocial + '\'' +
             ", primerNombre='" + primerNombre + '\'' +

@@ -1,4 +1,4 @@
-package com.saluddigital.cerroverde.logic;
+package com.saluddigital.cerroverde.model;
 
 import java.time.LocalDate;
 
@@ -9,20 +9,14 @@ public class Medico extends Empleado{
     private String servicio;
     private String estado;
 
-    public Medico(){
-        idMedico = 0;
-        numConsultorio = "";
-        especialidad = "";
-        servicio = "";
-        estado = "";
-    }
-
     public Medico(int idMedico, String numConsultorio, String especialidad, String servicio, String estado, 
-                  int idEmpleado, LocalDate fechaIngreso, String area, String cargo, String correoCentroSalud, 
-                  int idPersona, String nombres, String apellidos, String tipoDocumento, String numeroDocumento, 
-                  String sexo, LocalDate fechaNacimiento, String direccion, String telefono, String correo) {
-        super(idEmpleado, fechaIngreso, area, cargo, correoCentroSalud, idPersona, nombres, apellidos, tipoDocumento, 
-              numeroDocumento, sexo, fechaNacimiento, direccion, telefono, correo);
+                int idEmpleado, LocalDate fechaIngreso, String area, String cargo, String correoCentroSalud,
+                int idPersona, String documento, String seguroSocial, String primerNombre, String segundoNombre,
+                String apellidoPaterno, String apellidoMaterno, String sexo, String telefono, String correoElectronico,
+                String direccion, String nacionalidad, String estadoCivil, LocalDate fechaNacimiento) {
+        super(idEmpleado, fechaIngreso, area, cargo, correoCentroSalud, idPersona, documento, seguroSocial, primerNombre,
+                segundoNombre, apellidoPaterno, apellidoMaterno, sexo, telefono, correoElectronico, direccion, nacionalidad, 
+                estadoCivil, fechaNacimiento);
         this.idMedico = idMedico;
         this.numConsultorio = numConsultorio;
         this.especialidad = especialidad;
@@ -70,5 +64,11 @@ public class Medico extends Empleado{
         this.estado = estado;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Medico{" + "idMedico=" + idMedico + ", numConsultorio=" + numConsultorio + 
+            ", especialidad=" + especialidad + ", servicio=" + servicio + ", estado=" + estado + '}';
+    }
+
+
 }
