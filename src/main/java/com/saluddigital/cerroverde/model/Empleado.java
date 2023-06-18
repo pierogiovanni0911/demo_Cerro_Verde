@@ -1,21 +1,22 @@
 package com.saluddigital.cerroverde.model;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Empleado extends Persona{
     private int idEmpleado;
-    private LocalDate fechaIngreso;
+    private Date fechaIngreso;
     private String area;
     private String cargo;
     private String correoCentroSalud;
 
-    public Empleado(int idEmpleado, LocalDate fechaIngreso, String area, String cargo, 
-                    String correoCentroSalud, int idPersona, String documento, String seguroSocial,
+    public Empleado(int idEmpleado, Date fechaIngreso, String area, String cargo, 
+                    String correoCentroSalud, int idPersona, String documento, String tipoDoc, String seguroSocial,
                     String primerNombre, String segundoNombre, String apellidoPaterno, String apellidoMaterno,
-                    String sexo, String telefono, String correoElectronico, String direccion, String nacionalidad,
-                    String estadoCivil, LocalDate fechaNacimiento) {
-        super(idPersona, documento, seguroSocial, primerNombre, segundoNombre, apellidoPaterno, apellidoMaterno, 
-                sexo, telefono, correoElectronico, direccion, nacionalidad, estadoCivil, fechaNacimiento);
+                    String sexo, String telefono, String correoElectronico, String direccion, String departamento, 
+                    String provincia, String distrito,String nacionalidad, String estadoCivil, Date fechaNacimiento) {
+        super(idPersona, documento, tipoDoc, seguroSocial, primerNombre, segundoNombre, apellidoPaterno, apellidoMaterno, 
+                sexo, telefono, correoElectronico, direccion, departamento, provincia, distrito, nacionalidad, estadoCivil,
+                fechaNacimiento);
         this.idEmpleado = idEmpleado;
         this.fechaIngreso = fechaIngreso;
         this.area = area;
@@ -31,11 +32,11 @@ public class Empleado extends Persona{
         this.idEmpleado = idEmpleado;
     }
 
-    public LocalDate getFechaIngreso() {
+    public Date getFechaIngreso() {
         return fechaIngreso;
     }
 
-    public void setFechaIngreso(LocalDate fechaIngreso) {
+    public void setFechaIngreso(Date fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
 

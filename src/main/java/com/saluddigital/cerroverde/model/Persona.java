@@ -1,12 +1,13 @@
 package com.saluddigital.cerroverde.model;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 // Clase padre
 public abstract class Persona {
     
     private int idPersona;
     private String documento;
+    private String tipoDoc;
     private String seguroSocial;
     private String primerNombre;
     private String segundoNombre;
@@ -16,15 +17,20 @@ public abstract class Persona {
     private String telefono;
     private String correoElectronico;
     private String direccion;
+    private String departamento;
+    private String provincia;
+    private String distrito;
     private String nacionalidad;
     private String estadoCivil;
-    private LocalDate fechaNacimiento;
+    private Date fechaNacimiento;
 
-    public Persona(int idPersona, String documento, String seguroSocial, String primerNombre, String segundoNombre,
+    public Persona(int idPersona, String documento, String tipoDoc, String seguroSocial, String primerNombre, String segundoNombre,
             String apellidoPaterno, String apellidoMaterno, String sexo, String telefono, String correoElectronico,
-            String direccion, String nacionalidad, String estadoCivil, LocalDate fechaNacimiento) {
+            String direccion, String departamento, String provincia, String distrito, String nacionalidad, String estadoCivil, 
+            Date fechaNacimiento) {
         this.idPersona = idPersona;
         this.documento = documento;
+        this.tipoDoc = tipoDoc;
         this.seguroSocial = seguroSocial;
         this.primerNombre = primerNombre;
         this.segundoNombre = segundoNombre;
@@ -34,9 +40,15 @@ public abstract class Persona {
         this.telefono = telefono;
         this.correoElectronico = correoElectronico;
         this.direccion = direccion;
+        this.departamento = departamento;
+        this.provincia = provincia;
+        this.distrito = distrito;
         this.nacionalidad = nacionalidad;
         this.estadoCivil = estadoCivil;
         this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public Persona(){
     }
 
     public int getIdPersona() {
@@ -50,6 +62,12 @@ public abstract class Persona {
     }
     public void setDocumento(String documento) {
         this.documento = documento;
+    }
+    public String getTipoDoc() {
+        return tipoDoc;
+    }
+    public void setTipoDoc(String tipoDoc) {
+        this.tipoDoc = tipoDoc;
     }
     public String getSeguroSocial() {
         return seguroSocial;
@@ -105,6 +123,24 @@ public abstract class Persona {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+    public String getDepartamento() {
+        return departamento;
+    }
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+    public String getProvincia() {
+        return provincia;
+    }
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
+    }
+    public String getDistrito() {
+        return distrito;
+    }
+    public void setDistrito(String distrito) {
+        this.distrito = distrito;
+    }
     public String getNacionalidad() {
         return nacionalidad;
     }
@@ -117,20 +153,11 @@ public abstract class Persona {
     public void setEstadoCivil(String estadoCivil) {
         this.estadoCivil = estadoCivil;
     }
-    public LocalDate getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public int calcularEdad() {
-        LocalDate ahora = LocalDate.now();
-        int edad = ahora.getYear() - fechaNacimiento.getYear();
-        if (fechaNacimiento.plusYears(edad).isAfter(ahora)) {
-            edad--;
-        }
-        return edad;
     }
     
     @Override
@@ -138,6 +165,7 @@ public abstract class Persona {
     return "Persona{" +
             "idPersona=" + idPersona +
             ", documento='" + documento + '\'' +
+            ", tipoDoc='" + tipoDoc + '\'' +
             ", seguroSocial='" + seguroSocial + '\'' +
             ", primerNombre='" + primerNombre + '\'' +
             ", segundoNombre='" + segundoNombre + '\'' +
@@ -147,6 +175,9 @@ public abstract class Persona {
             ", telefono='" + telefono + '\'' +
             ", correoElectronico='" + correoElectronico + '\'' +
             ", direccion='" + direccion + '\'' +
+            ", departamento='" + departamento + '\'' +
+            ", provincia='" + provincia + '\'' +
+            ", distrito='" + distrito + '\'' +
             ", nacionalidad='" + nacionalidad + '\'' +
             ", estadoCivil='" + estadoCivil + '\'' +
             ", fechaNacimiento=" + fechaNacimiento +

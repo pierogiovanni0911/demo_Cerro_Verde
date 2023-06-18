@@ -1,6 +1,6 @@
 package com.saluddigital.cerroverde.model;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Medico extends Empleado{
     private int idMedico;
@@ -10,13 +10,13 @@ public class Medico extends Empleado{
     private String estado;
 
     public Medico(int idMedico, String numConsultorio, String especialidad, String servicio, String estado, 
-                int idEmpleado, LocalDate fechaIngreso, String area, String cargo, String correoCentroSalud,
-                int idPersona, String documento, String seguroSocial, String primerNombre, String segundoNombre,
+                int idEmpleado, Date fechaIngreso, String area, String cargo, String correoCentroSalud,
+                int idPersona, String documento, String tipoDoc, String seguroSocial, String primerNombre, String segundoNombre,
                 String apellidoPaterno, String apellidoMaterno, String sexo, String telefono, String correoElectronico,
-                String direccion, String nacionalidad, String estadoCivil, LocalDate fechaNacimiento) {
-        super(idEmpleado, fechaIngreso, area, cargo, correoCentroSalud, idPersona, documento, seguroSocial, primerNombre,
-                segundoNombre, apellidoPaterno, apellidoMaterno, sexo, telefono, correoElectronico, direccion, nacionalidad, 
-                estadoCivil, fechaNacimiento);
+                String direccion, String departamento, String provincia, String distrito, String nacionalidad, String estadoCivil, Date fechaNacimiento) {
+        super(idEmpleado, fechaIngreso, area, cargo, correoCentroSalud, idPersona, documento, tipoDoc, seguroSocial, primerNombre,
+                segundoNombre, apellidoPaterno, apellidoMaterno, sexo, telefono, correoElectronico, direccion, departamento,
+                provincia, distrito, nacionalidad, estadoCivil, fechaNacimiento);
         this.idMedico = idMedico;
         this.numConsultorio = numConsultorio;
         this.especialidad = especialidad;
