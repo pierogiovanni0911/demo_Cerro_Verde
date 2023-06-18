@@ -1,9 +1,9 @@
-/home/pierogiovanni/repos_java/demo_Cerro_Verde/src/main/java/com/saluddigital/cerroverde/model/Persona.java
-/home/pierogiovanni/repos_java/demo_Cerro_Verde/src/main/java/com/saluddigital/cerroverde/model/Empleado.java
-/home/pierogiovanni/repos_java/demo_Cerro_Verde/src/main/java/com/saluddigital/cerroverde/model/Paciente.java
-/home/pierogiovanni/repos_java/demo_Cerro_Verde/src/main/java/com/saluddigital/cerroverde/view/PanelPaciente.java
-/home/pierogiovanni/repos_java/demo_Cerro_Verde/src/main/java/com/saluddigital/cerroverde/controller/GestorPaciente.java
-/home/pierogiovanni/repos_java/demo_Cerro_Verde/src/main/java/com/saluddigital/cerroverde/model/HistoriaClinica.java
-/home/pierogiovanni/repos_java/demo_Cerro_Verde/src/main/java/com/saluddigital/cerroverde/model/Medico.java
-/home/pierogiovanni/repos_java/demo_Cerro_Verde/src/main/java/com/saluddigital/cerroverde/view/VentanaLogeo.java
-/home/pierogiovanni/repos_java/demo_Cerro_Verde/src/main/java/com/saluddigital/cerroverde/controller/GestorMedico.java
+D:\Piero Vargas\Documentos\repo_java\demo_Cerro_Verde\src\main\java\com\saluddigital\cerroverde\controller\GestorPaciente.java
+D:\Piero Vargas\Documentos\repo_java\demo_Cerro_Verde\src\main\java\com\saluddigital\cerroverde\model\Empleado.java
+D:\Piero Vargas\Documentos\repo_java\demo_Cerro_Verde\src\main\java\com\saluddigital\cerroverde\model\HistoriaClinica.java
+D:\Piero Vargas\Documentos\repo_java\demo_Cerro_Verde\src\main\java\com\saluddigital\cerroverde\model\Paciente.java
+D:\Piero Vargas\Documentos\repo_java\demo_Cerro_Verde\src\main\java\com\saluddigital\cerroverde\controller\GestorMedico.java
+D:\Piero Vargas\Documentos\repo_java\demo_Cerro_Verde\src\main\java\com\saluddigital\cerroverde\model\Medico.java
+D:\Piero Vargas\Documentos\repo_java\demo_Cerro_Verde\src\main\java\com\saluddigital\cerroverde\view\RegistroPaciente.java
+D:\Piero Vargas\Documentos\repo_java\demo_Cerro_Verde\src\main\java\com\saluddigital\cerroverde\view\VentanaLogeo.java
+D:\Piero Vargas\Documentos\repo_java\demo_Cerro_Verde\src\main\java\com\saluddigital\cerroverde\model\Persona.java
