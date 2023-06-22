@@ -5,14 +5,10 @@ import java.util.Date;
 // Clase padre
 public abstract class Persona {
     
-    private int idPersona;
     private String documento;
-    private String tipoDoc;
+    private String nombre;
+    private String apellido;
     private String seguroSocial;
-    private String primerNombre;
-    private String segundoNombre;
-    private String apellidoPaterno;
-    private String apellidoMaterno;
     private String sexo;
     private String telefono;
     private String correoElectronico;
@@ -20,22 +16,16 @@ public abstract class Persona {
     private String departamento;
     private String provincia;
     private String distrito;
-    private String nacionalidad;
     private String estadoCivil;
     private Date fechaNacimiento;
 
-    public Persona(int idPersona, String documento, String tipoDoc, String seguroSocial, String primerNombre, String segundoNombre,
-            String apellidoPaterno, String apellidoMaterno, String sexo, String telefono, String correoElectronico,
-            String direccion, String departamento, String provincia, String distrito, String nacionalidad, String estadoCivil, 
-            Date fechaNacimiento) {
-        this.idPersona = idPersona;
+    public Persona(String documento, String nombre, String apellido, String seguroSocial, String sexo,
+            String telefono, String correoElectronico, String direccion, String departamento, String provincia,
+            String distrito, String estadoCivil, Date fechaNacimiento) {
         this.documento = documento;
-        this.tipoDoc = tipoDoc;
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.seguroSocial = seguroSocial;
-        this.primerNombre = primerNombre;
-        this.segundoNombre = segundoNombre;
-        this.apellidoPaterno = apellidoPaterno;
-        this.apellidoMaterno = apellidoMaterno;
         this.sexo = sexo;
         this.telefono = telefono;
         this.correoElectronico = correoElectronico;
@@ -43,7 +33,6 @@ public abstract class Persona {
         this.departamento = departamento;
         this.provincia = provincia;
         this.distrito = distrito;
-        this.nacionalidad = nacionalidad;
         this.estadoCivil = estadoCivil;
         this.fechaNacimiento = fechaNacimiento;
     }
@@ -51,23 +40,11 @@ public abstract class Persona {
     public Persona(){
     }
 
-    public int getIdPersona() {
-        return idPersona;
-    }
-    public void setId(int idPersona) {
-        this.idPersona = idPersona;
-    }
     public String getDocumento() {
         return documento;
     }
     public void setDocumento(String documento) {
         this.documento = documento;
-    }
-    public String getTipoDoc() {
-        return tipoDoc;
-    }
-    public void setTipoDoc(String tipoDoc) {
-        this.tipoDoc = tipoDoc;
     }
     public String getSeguroSocial() {
         return seguroSocial;
@@ -75,29 +52,17 @@ public abstract class Persona {
     public void setSeguroSocial(String seguroSocial) {
         this.seguroSocial = seguroSocial;
     }
-    public String getPrimerNombre() {
-        return primerNombre;
+    public String getNombre() {
+        return nombre;
     }
-    public void setPrimerNombre(String primerNombre) {
-        this.primerNombre = primerNombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-    public String getSegundoNombre() {
-        return segundoNombre;
+    public String getApellido() {
+        return apellido;
     }
-    public void setSegundoNombre(String segundoNombre) {
-        this.segundoNombre = segundoNombre;
-    }
-    public String getApellidoPaterno() {
-        return apellidoPaterno;
-    }
-    public void setApellidoPaterno(String apellidoPaterno) {
-        this.apellidoPaterno = apellidoPaterno;
-    }
-    public String getApellidoMaterno() {
-        return apellidoMaterno;
-    }
-    public void setApellidoMaterno(String apellidoMaterno) {
-        this.apellidoMaterno = apellidoMaterno;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
     public String getSexo() {
         return sexo;
@@ -141,12 +106,6 @@ public abstract class Persona {
     public void setDistrito(String distrito) {
         this.distrito = distrito;
     }
-    public String getNacionalidad() {
-        return nacionalidad;
-    }
-    public void setNacionalidad(String nacionalidad) {
-        this.nacionalidad = nacionalidad;
-    }
     public String getEstadoCivil() {
         return estadoCivil;
     }
@@ -163,14 +122,10 @@ public abstract class Persona {
     @Override
     public String toString() {
     return "Persona{" +
-            "idPersona=" + idPersona +
-            ", documento='" + documento + '\'' +
-            ", tipoDoc='" + tipoDoc + '\'' +
+            "documento='" + documento + '\'' +
+            ", nombre='" + nombre + '\'' +
+            ", apellido='" + apellido + '\'' +
             ", seguroSocial='" + seguroSocial + '\'' +
-            ", primerNombre='" + primerNombre + '\'' +
-            ", segundoNombre='" + segundoNombre + '\'' +
-            ", apellidoPaterno='" + apellidoPaterno + '\'' +
-            ", apellidoMaterno='" + apellidoMaterno + '\'' +
             ", sexo='" + sexo + '\'' +
             ", telefono='" + telefono + '\'' +
             ", correoElectronico='" + correoElectronico + '\'' +
@@ -178,7 +133,6 @@ public abstract class Persona {
             ", departamento='" + departamento + '\'' +
             ", provincia='" + provincia + '\'' +
             ", distrito='" + distrito + '\'' +
-            ", nacionalidad='" + nacionalidad + '\'' +
             ", estadoCivil='" + estadoCivil + '\'' +
             ", fechaNacimiento=" + fechaNacimiento +
             '}';

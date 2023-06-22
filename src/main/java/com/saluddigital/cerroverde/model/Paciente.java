@@ -3,49 +3,29 @@ package com.saluddigital.cerroverde.model;
 import java.util.Date;
 
 public class Paciente extends Persona {
-    private String antecedentesPersonales;
-    private String antecedentesFamiliares;
-    private String antecedentesObstetricos;
+    private int idPaciente;
     private String grupoSanguineo;
+    private HistorialMedico historialMedico;
 
-    public Paciente(String antecedentesPersonales, String antecedentesFamiliares,
-            String antecedentesObstetricos, String grupoSanguineo, int idPersona, String documento, String tipoDoc,
-            String seguroSocial, String primerNombre, String segundoNombre, String apellidoPaterno, String apellidoMaterno,
-            String sexo, String telefono, String correoElectronico, String direccion, String departamento, String provincia,
-            String distrito, String nacionalidad, String estadoCivil, Date fechaNacimiento) {
-        super(idPersona, documento, tipoDoc, seguroSocial, primerNombre, segundoNombre, apellidoPaterno, apellidoMaterno, sexo,
-                telefono, correoElectronico, direccion, departamento, provincia, distrito, nacionalidad, estadoCivil, fechaNacimiento);
-        this.antecedentesPersonales = antecedentesPersonales;
-        this.antecedentesFamiliares = antecedentesFamiliares;
-        this.antecedentesObstetricos = antecedentesObstetricos;
+    public Paciente(int idPaciente, String grupoSanguineo, HistorialMedico historialMedico, int idPersona, String documento, String nombre,
+                    String apellido, String seguroSocial, String sexo, String telefono, String correoElectronico, String direccion,
+                    String departamento, String provincia, String distrito, String estadoCivil, Date fechaNacimiento) {
+        super(documento, nombre, apellido, seguroSocial, sexo, telefono, correoElectronico, direccion, departamento,
+            provincia, distrito, estadoCivil, fechaNacimiento);
+        this.idPaciente = idPaciente;
         this.grupoSanguineo = grupoSanguineo;
+        this.historialMedico = historialMedico;
     }
 
     public Paciente(){
     }
 
-    public String getAntecedentesPersonales() {
-        return antecedentesPersonales;
+    public int getIdPaciente() {
+        return idPaciente;
     }
-
-    public void setAntecedentesPersonales(String antecedentesPersonales) {
-        this.antecedentesPersonales = antecedentesPersonales;
-    }
-
-    public String getAntecedentesFamiliares() {
-        return antecedentesFamiliares;
-    }
-
-    public void setAntecedentesFamiliares(String antecedentesFamiliares) {
-        this.antecedentesFamiliares = antecedentesFamiliares;
-    }
-
-    public String getAntecedentesObstetricos() {
-        return antecedentesObstetricos;
-    }
-
-    public void setAntecedentesObstetricos(String antecedentesObstetricos) {
-        this.antecedentesObstetricos = antecedentesObstetricos;
+    
+    public void setIdPaciente(int idPaciente) {
+        this.idPaciente = idPaciente;
     }
 
     public String getGrupoSanguineo() {
@@ -56,31 +36,34 @@ public class Paciente extends Persona {
         this.grupoSanguineo = grupoSanguineo;
     }
 
+    public HistorialMedico getHistorialMedico(HistorialMedico historialMedico) {
+        return historialMedico;
+    }
+
+    public void setHistorialMedico(HistorialMedico historialMedico) {
+        this.historialMedico = historialMedico;
+    }
+
     @Override
     public String toString(){
         return "Paciente{" +
-                "antecedentesPersonales='" + antecedentesPersonales + '\'' +
-                ", antecedentesFamiliares='" + antecedentesFamiliares + '\'' +
-                ", antecedentesObstetricos='" + antecedentesObstetricos + '\'' +
-                ", grupoSanguineo='" + grupoSanguineo + '\'' +
-                ", idPersona=" + getIdPersona() +
-                ", documento='" + getDocumento() + '\'' +
-                ", tipoDoc='" + getTipoDoc() + '\'' +
-                ", seguroSocial='" + getSeguroSocial() + '\'' +
-                ", primerNombre='" + getPrimerNombre() + '\'' +
-                ", segundoNombre='" + getSegundoNombre() + '\'' +
-                ", apellidoPaterno='" + getApellidoPaterno() + '\'' +
-                ", apellidoMaterno='" + getApellidoMaterno() + '\'' +
-                ", sexo='" + getSexo() + '\'' +
-                ", telefono='" + getTelefono() + '\'' +
-                ", correoElectronico='" + getCorreoElectronico() + '\'' +
-                ", direccion='" + getDireccion() + '\'' +
-                ", departamento='" + getDepartamento() + '\'' +
-                ", provincia='" + getProvincia() + '\'' +
-                ", distrito='" + getDistrito() + '\'' +
-                ", nacionalidad='" + getNacionalidad() + '\'' +
-                ", estadoCivil='" + getEstadoCivil() + '\'' +
-                ", fechaNacimiento=" + getFechaNacimiento() +
-                '}';
+            "idPaciente=" + idPaciente +
+            ", documento='" + getDocumento() + '\'' +
+            ", nombre='" + getNombre() + '\'' +
+            ", apellido='" + getApellido() + '\'' +
+            ", seguroSocial='" + getSeguroSocial() + '\'' +
+            ", sexo='" + getSexo() + '\'' +
+            ", telefono='" + getTelefono() + '\'' +
+            ", correoElectronico='" + getCorreoElectronico() + '\'' +
+            ", direccion='" + getDireccion() + '\'' +
+            ", departamento='" + getDepartamento() + '\'' +
+            ", provincia='" + getProvincia() + '\'' +
+            ", distrito='" + getDistrito() + '\'' +
+            ", estadoCivil='" + getEstadoCivil() + '\'' +
+            ", fechaNacimiento=" + getFechaNacimiento() +
+            ", grupoSanguineo='" + grupoSanguineo + '\'' +
+            ", historialMedico=" + historialMedico +
+            '}';
+
     }
 }

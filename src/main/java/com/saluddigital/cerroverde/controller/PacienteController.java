@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.saluddigital.cerroverde.model.Paciente;
 
-public class GestorPaciente {
-    private List<Paciente> pacientes;
+public class PacienteController {
+    /*private List<Paciente> pacientes;
 
     public GestorPaciente() {
         pacientes = new ArrayList<Paciente>();
@@ -31,5 +31,5 @@ public class GestorPaciente {
 
     public List<Paciente> obtenerPacientes() {
         return pacientes;
-    }
+    }*/
 }

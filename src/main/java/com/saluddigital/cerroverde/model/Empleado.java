@@ -8,20 +8,20 @@ public class Empleado extends Persona{
     private String area;
     private String cargo;
     private String correoCentroSalud;
+    private String claveCentroSalud;
 
-    public Empleado(int idEmpleado, Date fechaIngreso, String area, String cargo, 
-                    String correoCentroSalud, int idPersona, String documento, String tipoDoc, String seguroSocial,
-                    String primerNombre, String segundoNombre, String apellidoPaterno, String apellidoMaterno,
-                    String sexo, String telefono, String correoElectronico, String direccion, String departamento, 
-                    String provincia, String distrito,String nacionalidad, String estadoCivil, Date fechaNacimiento) {
-        super(idPersona, documento, tipoDoc, seguroSocial, primerNombre, segundoNombre, apellidoPaterno, apellidoMaterno, 
-                sexo, telefono, correoElectronico, direccion, departamento, provincia, distrito, nacionalidad, estadoCivil,
-                fechaNacimiento);
+    public Empleado(int idEmpleado, Date fechaIngreso, String area, String cargo, String correoCentroSalud, 
+                    String claveCentroSalud, String documento, String seguroSocial, String nombre, String apellido,
+                    String sexo, String telefono, String correoElectronico, String direccion, String departamento,
+                    String provincia, String distrito, String estadoCivil, Date fechaNacimiento) {
+        super(documento, nombre, apellido, seguroSocial, sexo, telefono, correoElectronico, direccion, departamento,
+            provincia, distrito, estadoCivil, fechaNacimiento);
         this.idEmpleado = idEmpleado;
         this.fechaIngreso = fechaIngreso;
         this.area = area;
         this.cargo = cargo;
         this.correoCentroSalud = correoCentroSalud;
+        this.claveCentroSalud = claveCentroSalud;
     }
 
     public int getIdEmpleado() {
@@ -63,6 +63,12 @@ public class Empleado extends Persona{
     public void setCorreoCentroSalud(String correoCentroSalud) {
         this.correoCentroSalud = correoCentroSalud;
     }
-    
-    
+
+    public String getClaveCentroSalud() {
+        return claveCentroSalud;
+    }
+
+    public void setClaveCentroSalud(String claveCentroSalud) {
+        this.claveCentroSalud = claveCentroSalud;
+    }
 }
