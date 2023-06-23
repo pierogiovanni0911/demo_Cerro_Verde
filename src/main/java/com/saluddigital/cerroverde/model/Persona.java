@@ -3,8 +3,10 @@ package com.saluddigital.cerroverde.model;
 import java.util.Date;
 
 // Clase padre
-public abstract class Persona {
+public class Persona {
     
+    private int idPersona;
+
     private String documento;
     private String nombre;
     private String apellido;
@@ -19,9 +21,10 @@ public abstract class Persona {
     private String estadoCivil;
     private Date fechaNacimiento;
 
-    public Persona(String documento, String nombre, String apellido, String seguroSocial, String sexo,
+    public Persona(int idPersona, String documento, String nombre, String apellido, String seguroSocial, String sexo,
             String telefono, String correoElectronico, String direccion, String departamento, String provincia,
             String distrito, String estadoCivil, Date fechaNacimiento) {
+        this.idPersona = idPersona;
         this.documento = documento;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -38,6 +41,14 @@ public abstract class Persona {
     }
 
     public Persona(){
+    }
+
+    public int getIdPersona() {
+        return idPersona;
+    }
+
+    public void setIdPersona(int idPersona) {
+        this.idPersona = idPersona;
     }
 
     public String getDocumento() {
@@ -122,7 +133,8 @@ public abstract class Persona {
     @Override
     public String toString() {
     return "Persona{" +
-            "documento='" + documento + '\'' +
+            "idPersona=" + idPersona +
+            ", documento='" + documento + '\'' +
             ", nombre='" + nombre + '\'' +
             ", apellido='" + apellido + '\'' +
             ", seguroSocial='" + seguroSocial + '\'' +

@@ -4,18 +4,23 @@
  */
 package com.saluddigital.cerroverde.view;
 
+import com.saluddigital.cerroverde.controller.PacienteController;
+import com.saluddigital.cerroverde.model.Paciente;
 import java.awt.event.ItemEvent;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author piero
  */
 public class ModEliminarPaciente extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form ModEliminarPaciente
      */
@@ -70,7 +75,7 @@ public class ModEliminarPaciente extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         cboDistrito = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablePaciente = new javax.swing.JTable();
         btnBuscarPaciente = new javax.swing.JButton();
         btnModificarPaciente = new javax.swing.JButton();
         btnEliminarPaciente = new javax.swing.JButton();
@@ -139,17 +144,30 @@ public class ModEliminarPaciente extends javax.swing.JFrame {
 
         cboDistrito.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Seleccione-" }));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablePaciente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Documento", "Nombre", "Apellido", "Seguro Social", "Sexo", "Telefono", "E-mail", "Dirección", "Departamento", "Provincia", "Distrito", "Estado Civil", "Fecha Nacimiento", "Grupo Sanguineo"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(TablePaciente);
 
         btnBuscarPaciente.setText("Buscar Paciente");
+        btnBuscarPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarPacienteActionPerformed(evt);
+            }
+        });
 
         btnModificarPaciente.setText("Modificar Paciente");
 
@@ -350,12 +368,12 @@ public class ModEliminarPaciente extends javax.swing.JFrame {
             provinciasPorDepartamento.put("Callao", Arrays.asList("-Seleccione-", "Callao"));
             provinciasPorDepartamento.put("Cusco", Arrays.asList("-Seleccione-", "Acomayo", "Anta", "Calca", "Canas", "Canchis", "Chumbivilcas", "Cusco", "Espinar", "La Convencion", "Paruro", "Paucartambo", "Quispicanchi", "Urubamba"));
             provinciasPorDepartamento.put("Huancavelica", Arrays.asList("-Seleccione-", "Acobamba", "Angaraes", "Castrovirreyna", "Churcampa", "Huancavelica", "Huaytara", "Tayacaja"));
-            provinciasPorDepartamento.put("Huanuco", Arrays.asList("-Seleccione-", "Ambo", "Dos de Mayo", "Huacaybamba", "Huanuco", "Lauricocha", "Leoncio Prado", "Marañon", "Pachitea", "Puerto Inca", "Luya", "Rodriguez de Mendoza", "Huanuco", "Huamalies"));
+            provinciasPorDepartamento.put("Huanuco", Arrays.asList("-Seleccione-", "Ambo", "Dos de Mayo", "Huacaybamba", "Huanuco", "Lauricocha", "Leoncio Prado", "Maraï¿½on", "Pachitea", "Puerto Inca", "Luya", "Rodriguez de Mendoza", "Huanuco", "Huamalies"));
             provinciasPorDepartamento.put("Ica", Arrays.asList("-Seleccione-", "Chincha", "Ica", "Nazca", "Palpa", "Pisco"));
             provinciasPorDepartamento.put("Junin", Arrays.asList("-Seleccione-", "Chanchamayo", "Chupaca", "Concepcion", "Huancayo", "Jauja", "Junin", "Satipo", "Tarma", "Yauli"));
-            provinciasPorDepartamento.put("La Libertad", Arrays.asList("-Seleccione-", "Ascope", "Bolivar", "Chepen", "Gran Chimú", "Julcan", "Otuzco", "Pacasmayo", "Pataz", "Sanchez Carrion", "Santiago de Chuco", "Trujillo", "Viru"));
+            provinciasPorDepartamento.put("La Libertad", Arrays.asList("-Seleccione-", "Ascope", "Bolivar", "Chepen", "Gran Chimï¿½", "Julcan", "Otuzco", "Pacasmayo", "Pataz", "Sanchez Carrion", "Santiago de Chuco", "Trujillo", "Viru"));
             provinciasPorDepartamento.put("Lambayeque", Arrays.asList("-Seleccione-", "Chiclayo", "Ferrenafe", "Lambayeque"));
-            provinciasPorDepartamento.put("Lima", Arrays.asList("-Seleccione-", "Barranca", "Cajatambo", "Canta", "Cañete", "Huaral", "Huarochiri", "Huaura", "Lima", "Oyon", "Yauyos"));
+            provinciasPorDepartamento.put("Lima", Arrays.asList("-Seleccione-", "Barranca", "Cajatambo", "Canta", "Caï¿½ete", "Huaral", "Huarochiri", "Huaura", "Lima", "Oyon", "Yauyos"));
             provinciasPorDepartamento.put("Loreto", Arrays.asList("-Seleccione-", "Alto Amazonas", "Loreto", "Mariscal Ramon Castilla", "Maynas", "Requena", "Ucayali"));
             provinciasPorDepartamento.put("Madre de Dios", Arrays.asList("-Seleccione-", "Manu", "Tahuamanu", "Tambopata"));
             provinciasPorDepartamento.put("Moquegua", Arrays.asList("-Seleccione-", "General Sanchez Cerro", "Ilo", "Mariscal Nieto"));
@@ -386,8 +404,8 @@ public class ModEliminarPaciente extends javax.swing.JFrame {
             distritosPorProvincia.put("Bagua", Arrays.asList("-Seleccione-", "Aramango", "Bagua", "Copallin", "El Parco", "Imaza", "La Peca"));
             distritosPorProvincia.put("Bongara", Arrays.asList("-Seleccione-", "Chisquilla", "Churuja", "Corosha", "Cuispes", "Florida", "Jazan", "Jumbilla", "Recta", "San Carlos", "Shipasbamba", "Valera", "Yambrasbamba"));
             distritosPorProvincia.put("Chachapoyas", Arrays.asList("-Seleccione-", "Asuncion", "Balsas", "Chachapoyas", "Cheto", "Chiliquin", "Chuquibamba", "Granada", "Huancas", "La Jalca", "Leimebamba", "Levanto", "Magdalena", "Mariscal Castilla", "Molinopampa", "Montevideo", "Olleros", "Quinjalca", "San Francisco de Daguas", "San Isidro de Maino", "Soloco", "Sonche"));
-            distritosPorProvincia.put("Condorcanqui", Arrays.asList("-Seleccione-", "El Cenepa", "Nieva", "Río Santiago"));
-            distritosPorProvincia.put("Luya", Arrays.asList("-Seleccione-", "Camporredondo", "Cocabamba", "Colcamar", "Conila", "Inguilpata", "Lamud", "Longuita", "Lonya Chico", "Luya", "Luya Viejo", "María", "Ocalli", "Ocumal", "Pisuquia", "Providencia", "San Cristobal", "San Francisco del Yeso", "San Jerónimo", "San Juan de Lopecancha", "Santa Catalina", "Santo Tomas", "Tingo", "Trita"));
+            distritosPorProvincia.put("Condorcanqui", Arrays.asList("-Seleccione-", "El Cenepa", "Nieva", "Rï¿½o Santiago"));
+            distritosPorProvincia.put("Luya", Arrays.asList("-Seleccione-", "Camporredondo", "Cocabamba", "Colcamar", "Conila", "Inguilpata", "Lamud", "Longuita", "Lonya Chico", "Luya", "Luya Viejo", "Marï¿½a", "Ocalli", "Ocumal", "Pisuquia", "Providencia", "San Cristobal", "San Francisco del Yeso", "San Jerï¿½nimo", "San Juan de Lopecancha", "Santa Catalina", "Santo Tomas", "Tingo", "Trita"));
             distritosPorProvincia.put("Rodriguez de Mendoza", Arrays.asList("-Seleccione-", "Chirimoto", "Cochamal", "Huambo", "Limabamba", "Longar", "Mariscal Benavides", "Milpuc", "Omia", "Santa Rosa", "Totora", "Vista Alegre"));
             distritosPorProvincia.put("Utcubamba", Arrays.asList("-Seleccione-", "Bagua Grande", "Cajaruro", "Cumba", "El Milagro", "Jamalca", "Lonya Grande", "Yamon", "Yambrasbamba"));
             // Ancash
@@ -396,45 +414,45 @@ public class ModEliminarPaciente extends javax.swing.JFrame {
             distritosPorProvincia.put("Asuncion", Arrays.asList("-Seleccione-", "Chacas", "Acochaca"));
             distritosPorProvincia.put("Bolognesi", Arrays.asList("-Seleccione-", "Chiquian", "Abelardo Pardo Lezameta", "Antonio Raymondi", "Aquia", "Cajacay", "Canis", "Colquioc", "Huallanca", "Huasta", "Huayllacayan", "La Primavera", "Mangas", "Pacllon", "San Miguel de Corpanqui", "Ticllos"));
             distritosPorProvincia.put("Carhuaz", Arrays.asList("-Seleccione-", "Carhuaz", "Acopampa", "Amashca", "Anta", "Ataquero", "Marcara", "Pariahuanca", "San Miguel de Aco", "Shilla", "Tinco", "Yungar"));
-            distritosPorProvincia.put("Carlos Fermin Fitzcarrald", Arrays.asList("-Seleccione-", "San Luis", "San Nicolás", "Yauya"));
+            distritosPorProvincia.put("Carlos Fermin Fitzcarrald", Arrays.asList("-Seleccione-", "San Luis", "San Nicolï¿½s", "Yauya"));
             distritosPorProvincia.put("Casma", Arrays.asList("-Seleccione-", "Casma", "Buena Vista Alta", "Comandante Noel", "Yautan"));
             distritosPorProvincia.put("Corongo", Arrays.asList("-Seleccione-", "Corongo", "Aco", "Bambas", "Cusca", "La Pampa", "Yanac", "Yupan"));
             distritosPorProvincia.put("Huaraz", Arrays.asList("-Seleccione-", "Huaraz", "Cochabamba", "Colcabamba", "Huanchay", "Independencia", "Jangas", "La Libertad", "Olleros", "Pampas Grande", "Pariacoto", "Pira", "Tarica"));
             distritosPorProvincia.put("Huari", Arrays.asList("-Seleccione-", "Huari", "Anra", "Cajay", "Chavin de Huantar", "Huacachi", "Huacchis", "Huachis", "Huantar", "Masin", "Paucas", "Ponto", "Rahuapampa", "Rapayan", "San Marcos", "San Pedro de Chana", "Uco"));
             distritosPorProvincia.put("Huarmey", Arrays.asList("-Seleccione-", "Huarmey", "Cochapeti", "Culebras", "Huayan", "Malvas"));
             distritosPorProvincia.put("Huaylas", Arrays.asList("-Seleccione-", "Caraz", "Huallanca", "Huata", "Huaylas", "Mato", "Pamparomas", "Pueblo Libre", "Santa Cruz", "Santo Toribio", "Yuracmarca"));
-            distritosPorProvincia.put("Mariscal Luzuriaga", Arrays.asList("-Seleccione-", "Piscobamba", "Casca", "Eleazar Guzmán Barron", "Fidel Olivas Escudero", "Llama", "Llumpa", "Lucma", "Musga"));
+            distritosPorProvincia.put("Mariscal Luzuriaga", Arrays.asList("-Seleccione-", "Piscobamba", "Casca", "Eleazar Guzmï¿½n Barron", "Fidel Olivas Escudero", "Llama", "Llumpa", "Lucma", "Musga"));
             distritosPorProvincia.put("Ocros", Arrays.asList("-Seleccione-", "Ocros", "Acas", "Cajamarquilla", "Carhuapampa", "Cochas", "Congas", "Llipa", "San Cristobal de Rajan", "San Pedro", "Santiago de Chilcas"));
             distritosPorProvincia.put("Pallasca", Arrays.asList("-Seleccione-", "Cabana", "Bolognesi", "Conchucos", "Huacaschuque", "Huandoval", "Lacabamba", "Llapo", "Pallasca", "Pampas", "Santa Rosa", "Tauca"));
             distritosPorProvincia.put("Pomabamba", Arrays.asList("-Seleccione-", "Pomabamba", "Huayllan", "Parobamba", "Quinuabamba"));
             distritosPorProvincia.put("Recuay", Arrays.asList("-Seleccione-", "Recuay", "Catac", "Cotaparaco", "Huayllapampa", "Llacllin", "Marca", "Pararin", "Tapacocha", "Ticapampa", "Tocllaraju"));
-            distritosPorProvincia.put("Santa", Arrays.asList("-Seleccione-", "Chimbote", "Cáceres del Perú", "Coishco", "Macate", "Moro", "Nepeña", "Samanco", "Santa", "Nuevo Chimbote"));
+            distritosPorProvincia.put("Santa", Arrays.asList("-Seleccione-", "Chimbote", "Cï¿½ceres del Perï¿½", "Coishco", "Macate", "Moro", "Nepeï¿½a", "Samanco", "Santa", "Nuevo Chimbote"));
             distritosPorProvincia.put("Sihuas", Arrays.asList("-Seleccione-", "Sihuas", "Acobamba", "Alfonso Ugarte", "Cashapampa", "Chingalpo", "Huayllabamba", "Quiches", "Ragash", "San Juan", "Sicsibamba", "Yungay"));
             distritosPorProvincia.put("Yungay", Arrays.asList("-Seleccione-", "Yungay", "Cascapara", "Mancos", "Matacoto", "Quillo", "Ranrahirca", "Shupluy", "Yanama"));
             // Apurimac
             distritosPorProvincia.put("Abancay", Arrays.asList("-Seleccione-", "Abancay", "Chacoche", "Circa", "Curahuasi", "Huanipaca", "Lambrama", "Pichirhua", "San Pedro de Cachora", "Tamburco"));
-            distritosPorProvincia.put("Andahuaylas", Arrays.asList("-Seleccione-", "Andahuaylas", "Andarapa", "Chiara", "Huancarama", "Huancaray", "Huayana", "Kishuara", "Pacobamba", "Pacucha", "Pampachiri", "Pomacocha", "San Antonio de Cachi", "San Jerónimo", "San Miguel de Chaccrampa", "Santa María de Chicmo", "Talavera", "Tumay Huaraca"));
+            distritosPorProvincia.put("Andahuaylas", Arrays.asList("-Seleccione-", "Andahuaylas", "Andarapa", "Chiara", "Huancarama", "Huancaray", "Huayana", "Kishuara", "Pacobamba", "Pacucha", "Pampachiri", "Pomacocha", "San Antonio de Cachi", "San Jerï¿½nimo", "San Miguel de Chaccrampa", "Santa Marï¿½a de Chicmo", "Talavera", "Tumay Huaraca"));
             distritosPorProvincia.put("Antabamba", Arrays.asList("-Seleccione-", "Antabamba", "El Oro", "Huaquirca", "Juan Espinoza Medrano", "Oropesa", "Pachaconas", "Sabaino"));
-            distritosPorProvincia.put("Aymaraes", Arrays.asList("-Seleccione-", "Chalhuanca", "Capaya", "Caraybamba", "Chapimarca", "Colcabamba", "Cotaruse", "Ihuayllo", "Justo Apu Sahuaraura", "Lucre", "Pocohuanca", "San Juan de Chacña", "Sañayca", "Soraya", "Tapairihua", "Tintay"));
-            distritosPorProvincia.put("Chincheros", Arrays.asList("-Seleccione-", "Chincheros", "Anco_Huallo", "Cocharcas", "Huaccana", "Ocobamba", "Ongoy", "Uranmarca", "Ranracancha", "Rocchacc", "El Porvenir", "Los Chankas", "Río Grande"));
+            distritosPorProvincia.put("Aymaraes", Arrays.asList("-Seleccione-", "Chalhuanca", "Capaya", "Caraybamba", "Chapimarca", "Colcabamba", "Cotaruse", "Ihuayllo", "Justo Apu Sahuaraura", "Lucre", "Pocohuanca", "San Juan de Chacï¿½a", "Saï¿½ayca", "Soraya", "Tapairihua", "Tintay"));
+            distritosPorProvincia.put("Chincheros", Arrays.asList("-Seleccione-", "Chincheros", "Anco_Huallo", "Cocharcas", "Huaccana", "Ocobamba", "Ongoy", "Uranmarca", "Ranracancha", "Rocchacc", "El Porvenir", "Los Chankas", "Rï¿½o Grande"));
             distritosPorProvincia.put("Cotabambas", Arrays.asList("-Seleccione-", "Tambobamba", "Cotabambas", "Coyllurqui", "Haquira", "Mara", "Challhuahuacho"));
             distritosPorProvincia.put("Grau", Arrays.asList("-Seleccione-", "Chuquibambilla", "Curpahuasi", "Gamarra", "Huayllati", "Mamara", "Micaela Bastidas", "Pataypampa", "Progreso", "San Antonio", "Santa Rosa", "Turpay", "Vilcabamba", "Virundo", "Curasco"));
             // Arequipa
-            distritosPorProvincia.put("Arequipa", Arrays.asList("-Seleccione-", "Arequipa", "Alto Selva Alegre", "Cayma", "Cerro Colorado", "Characato", "Chiguata", "Jacobo Hunter", "La Joya", "Mariano Melgar", "Miraflores", "Mollebaya", "Paucarpata", "Pocsi", "Polobaya", "Quequeña", "Sabandia", "Sachaca", "San Juan de Siguas", "San Juan de Tarucani", "Santa Isabel de Siguas", "Santa Rita de Siguas", "Socabaya", "Tiabaya", "Uchumayo", "Vitor", "Yanahuara", "Yarabamba", "Yura", "José Luis Bustamante y Rivero"));
-            distritosPorProvincia.put("Camana", Arrays.asList("-Seleccione-", "Camana", "Jose Maria Quimper", "Mariano Nicolas Valcarcel", "Mariscal Caceres", "Nicolás de Piérola", "Ocoña", "Quilca", "Samuel Pastor"));
+            distritosPorProvincia.put("Arequipa", Arrays.asList("-Seleccione-", "Arequipa", "Alto Selva Alegre", "Cayma", "Cerro Colorado", "Characato", "Chiguata", "Jacobo Hunter", "La Joya", "Mariano Melgar", "Miraflores", "Mollebaya", "Paucarpata", "Pocsi", "Polobaya", "Quequeï¿½a", "Sabandia", "Sachaca", "San Juan de Siguas", "San Juan de Tarucani", "Santa Isabel de Siguas", "Santa Rita de Siguas", "Socabaya", "Tiabaya", "Uchumayo", "Vitor", "Yanahuara", "Yarabamba", "Yura", "Josï¿½ Luis Bustamante y Rivero"));
+            distritosPorProvincia.put("Camana", Arrays.asList("-Seleccione-", "Camana", "Jose Maria Quimper", "Mariano Nicolas Valcarcel", "Mariscal Caceres", "Nicolï¿½s de Piï¿½rola", "Ocoï¿½a", "Quilca", "Samuel Pastor"));
             distritosPorProvincia.put("Caraveli", Arrays.asList("-Seleccione-", "Caraveli", "Acari", "Atico", "Atiquipa", "Bella Union", "Cahuacho", "Chala", "Chaparra", "Huanuhuanu", "Jaqui", "Lomas", "Quicacha", "Yauca"));
-            distritosPorProvincia.put("Castilla", Arrays.asList("-Seleccione-", "Aplao", "Andagua", "Ayo", "Chachas", "Chilcaymarca", "Choco", "Huancarqui", "Machaguay", "Orcopampa", "Pampacolca", "Tipan", "Uñon", "Uraca", "Viraco"));
+            distritosPorProvincia.put("Castilla", Arrays.asList("-Seleccione-", "Aplao", "Andagua", "Ayo", "Chachas", "Chilcaymarca", "Choco", "Huancarqui", "Machaguay", "Orcopampa", "Pampacolca", "Tipan", "Uï¿½on", "Uraca", "Viraco"));
             distritosPorProvincia.put("Caylloma", Arrays.asList("-Seleccione-", "Chivay", "Achoma", "Cabanaconde", "Callalli", "Caylloma", "Coporaque", "Huambo", "Huanca", "Ichupampa", "Lari", "Lluta", "Maca", "Madrigal", "San Antonio de Chuca", "Sibayo", "Tapay", "Tisco", "Tuti", "Yanque"));
-            distritosPorProvincia.put("Condesuyos", Arrays.asList("-Seleccione-", "Chuquibamba", "Andaray", "Cayarani", "Chichas", "Iray", "Río Grande", "Salamanca", "Yanaquihua"));
+            distritosPorProvincia.put("Condesuyos", Arrays.asList("-Seleccione-", "Chuquibamba", "Andaray", "Cayarani", "Chichas", "Iray", "Rï¿½o Grande", "Salamanca", "Yanaquihua"));
             distritosPorProvincia.put("Islay", Arrays.asList("-Seleccione-", "Mollendo", "Cocachacra", "Dean Valdivia", "Islay", "Mejia", "Punta de Bombon"));
             distritosPorProvincia.put("La Union", Arrays.asList("-Seleccione-", "Cotahuasi", "Alca", "Charcana", "Huaynacotas", "Pampamarca", "Puyca", "Quechualla", "Sayla", "Tauria", "Tomepampa", "Toro"));
             // Ayacucho
             distritosPorProvincia.put("Cangallo", Arrays.asList("-Seleccione-", "Cangallo", "Chuschi", "Los Morochucos", "Maria Parado de Bellido", "Paras", "Totos"));
-            distritosPorProvincia.put("Huamanga", Arrays.asList("-Seleccione-", "Acocro", "Acos Vinchos", "Andres Avelino Caceres Dorregaray", "Ayacucho", "Carmen Alto", "Chiara", "Jesús Nazareno", "Ocros", "Pacaycasa", "Quinua", "San Jose de Ticllas", "San Juan Bautista", "Santiago de Pischa", "Socos", "Tambillo", "Vinchos"));
+            distritosPorProvincia.put("Huamanga", Arrays.asList("-Seleccione-", "Acocro", "Acos Vinchos", "Andres Avelino Caceres Dorregaray", "Ayacucho", "Carmen Alto", "Chiara", "Jesï¿½s Nazareno", "Ocros", "Pacaycasa", "Quinua", "San Jose de Ticllas", "San Juan Bautista", "Santiago de Pischa", "Socos", "Tambillo", "Vinchos"));
             distritosPorProvincia.put("Huanca Sancos", Arrays.asList("-Seleccione-", "Carapo", "Sacsamarca", "Sancos", "Santiago de Lucanamarca"));
             distritosPorProvincia.put("Huanta", Arrays.asList("-Seleccione-", "Ayahuanco", "Huamanguilla", "Huanta", "Iguain", "Llochegua", "Luricocha", "Santillana", "Sivia"));
             distritosPorProvincia.put("La Mar", Arrays.asList("-Seleccione-", "Anchihuay", "Ayna", "Chilcas", "Chungui", "Luis Carranza", "Oronccoy", "Pampamarca", "San Miguel", "Santa Rosa", "Tambo"));
-            distritosPorProvincia.put("Lucanas", Arrays.asList("-Seleccione-", "Aucara", "Cabana", "Carmen Salcedo", "Chaviña", "Chipao", "Huac-Huas", "Laramate", "Leoncio Prado", "Llauta", "Lucanas", "Ocaña", "Otoca", "Saisa", "San Cristobal", "San Juan", "San Pedro", "San Pedro de Palco", "Santa Ana de Huaycahuacho", "Santa Lucia"));
+            distritosPorProvincia.put("Lucanas", Arrays.asList("-Seleccione-", "Aucara", "Cabana", "Carmen Salcedo", "Chaviï¿½a", "Chipao", "Huac-Huas", "Laramate", "Leoncio Prado", "Llauta", "Lucanas", "Ocaï¿½a", "Otoca", "Saisa", "San Cristobal", "San Juan", "San Pedro", "San Pedro de Palco", "Santa Ana de Huaycahuacho", "Santa Lucia"));
             distritosPorProvincia.put("Parinacochas", Arrays.asList("-Seleccione-", "Coracora", "Chumpi", "Coronel Castaneda", "Pacapausa", "Pullo", "Puyusca", "San Francisco de Ravacayco", "Upahuacho"));
             distritosPorProvincia.put("Paucar del Sara Sara", Arrays.asList("-Seleccione-", "Colta", "Corculla", "Lampa", "Marcabamba", "Oyolo", "Pararca", "Pausa", "San Javier de Alpabamba", "San Jose de Ushua", "Sara Sara"));
             distritosPorProvincia.put("Sucre", Arrays.asList("-Seleccione-", "Belen", "Chalcos", "Chilcayoc", "Huacana", "Morcolla", "Paico", "Querobamba", "San Pedro de Larcay", "San Salvador de Quije", "Santiago de Paucaray", "Soras"));
@@ -460,7 +478,7 @@ public class ModEliminarPaciente extends javax.swing.JFrame {
             distritosPorProvincia.put("Calca", Arrays.asList("-Seleccione-", "Calca", "Coya", "Lamay", "Lares", "Pisac", "San Salvador", "Taray", "Yanatile"));
             distritosPorProvincia.put("Canas", Arrays.asList("-Seleccione-", "Yanaoca", "Checca", "Kunturkanki", "Langui", "Layo", "Pampamarca", "Quehue", "Tupac Amaru", "Yaurisque"));
             distritosPorProvincia.put("Canchis", Arrays.asList("-Seleccione-", "Sicuani", "Checacupe", "Combapata", "Marangani", "Pitumarca", "San Pablo", "San Pedro", "Tinta"));
-            distritosPorProvincia.put("Chumbivilcas", Arrays.asList("-Seleccione-", "Santo Tomas", "Capacmarca", "Chamaca", "Colquemarca", "Livitaca", "Llusco", "Quiñota", "Velille"));
+            distritosPorProvincia.put("Chumbivilcas", Arrays.asList("-Seleccione-", "Santo Tomas", "Capacmarca", "Chamaca", "Colquemarca", "Livitaca", "Llusco", "Quiï¿½ota", "Velille"));
             distritosPorProvincia.put("Cusco", Arrays.asList("-Seleccione-", "Cusco", "Ccorca", "Poroy", "San Jeronimo", "San Sebastian", "Santiago", "Saylla", "Wanchaq"));
             distritosPorProvincia.put("Espinar", Arrays.asList("-Seleccione-", "Yauri", "Condoroma", "Coporaque", "Ocoruro", "Pallpata", "Pichigua", "Suyckutambo"));
             distritosPorProvincia.put("La Convencion", Arrays.asList("-Seleccione-", "Santa Ana", "Echarati", "Huayopata", "Maranura", "Ocobamba", "Quellouno", "Kimbiri", "Santa Teresa", "Vilcabamba", "Pichari"));
@@ -490,7 +508,7 @@ public class ModEliminarPaciente extends javax.swing.JFrame {
             distritosPorProvincia.put("Yarowilca", Arrays.asList("-Seleccione-", "Chavinillo", "Cahuac", "Chacabamba", "Aparicio Pomares", "Jacas Chico", "Obas", "Pampamarca", "Choras", "Yacus"));
             // Ica
             distritosPorProvincia.put("Chincha", Arrays.asList("-Seleccione-", "Chincha Alta", "Alto Laran", "Chavin", "Chincha Baja", "El Carmen", "Grocio Prado", "Pueblo Nuevo", "San Juan de Yanac", "San Pedro de Huacarpana", "Sunampe", "Tambo de Mora"));
-            distritosPorProvincia.put("Ica", Arrays.asList("-Seleccione-", "Ica", "La Tinguiña", "Los Aquijes", "Ocucaje", "Pachacutec", "Parcona", "Pueblo Nuevo", "Salas", "San Jose de Los Molinos", "San Juan Bautista", "Santiago", "Subtanjalla", "Tate", "Yauca del Rosario"));
+            distritosPorProvincia.put("Ica", Arrays.asList("-Seleccione-", "Ica", "La Tinguiï¿½a", "Los Aquijes", "Ocucaje", "Pachacutec", "Parcona", "Pueblo Nuevo", "Salas", "San Jose de Los Molinos", "San Juan Bautista", "Santiago", "Subtanjalla", "Tate", "Yauca del Rosario"));
             distritosPorProvincia.put("Nazca", Arrays.asList("-Seleccione-", "Nazca", "Changuillo", "El Ingenio", "Marcona", "Vista Alegre"));
             distritosPorProvincia.put("Palpa", Arrays.asList("-Seleccione-", "Palpa", "Llipata", "Rio Grande", "Santa Cruz", "Tibillo"));
             distritosPorProvincia.put("Pisco", Arrays.asList("-Seleccione-", "Pisco", "Huancano", "Humay", "Independencia", "Paracas", "San Andres", "San Clemente", "Tupac Amaru Inca"));
@@ -518,30 +536,30 @@ public class ModEliminarPaciente extends javax.swing.JFrame {
             distritosPorProvincia.put("Trujillo", Arrays.asList("-Seleccione-", "Trujillo", "El Porvenir", "Florencia de Mora", "Huanchaco", "La Esperanza", "Laredo", "Moche", "Poroto", "Salaverry", "Simbal", "Victor Larco Herrera"));
             distritosPorProvincia.put("Viru", Arrays.asList("-Seleccione-", "Viru", "Chao", "Guadalupito"));
             // Lambayeque
-            distritosPorProvincia.put("Chiclayo", Arrays.asList("-Seleccione-", "Chiclayo", "Chongoyape", "Eten", "Eten Puerto", "Jose Leonardo Ortiz", "La Victoria", "Lagunas", "Monsefu", "Nueva Arica", "Oyotun", "Picsi", "Pimentel", "Reque", "Santa Rosa", "Saña", "Tuman"));
+            distritosPorProvincia.put("Chiclayo", Arrays.asList("-Seleccione-", "Chiclayo", "Chongoyape", "Eten", "Eten Puerto", "Jose Leonardo Ortiz", "La Victoria", "Lagunas", "Monsefu", "Nueva Arica", "Oyotun", "Picsi", "Pimentel", "Reque", "Santa Rosa", "Saï¿½a", "Tuman"));
             distritosPorProvincia.put("Ferrenafe", Arrays.asList("-Seleccione-", "Ferrenafe", "Canaris", "Incahuasi", "Manuel Antonio Mesones Muro", "Pitipo", "Pueblo Nuevo"));
             distritosPorProvincia.put("Lambayeque", Arrays.asList("-Seleccione-", "Lambayeque", "Chanaris", "Illimo", "Jayanca", "Mochumi", "Morrope", "Motupe", "Olmos", "Pacora", "Salas", "San Jose", "Tucume"));
             // Lima
             distritosPorProvincia.put("Barranca", Arrays.asList("-Seleccione-", "Barranca", "Paramonga", "Pativilca", "Supe", "Supe Puerto"));
             distritosPorProvincia.put("Cajatambo", Arrays.asList("-Seleccione-", "Cajatambo", "Copa", "Gorgor", "Huancapon", "Manas", "Cahuac"));
             distritosPorProvincia.put("Canta", Arrays.asList("-Seleccione-", "Canta", "Arahuay", "Huamantanga", "Huaros", "Lachaqui", "San Buenaventura", "Santa Rosa de Quives"));
-            distritosPorProvincia.put("Cañete", Arrays.asList("-Seleccione-", "San Vicente", "Asia", "Calango", "Cerro Azul", "Chilca", "Coayllo", "Imperial", "Lunahuana", "Mala", "Nuevo Imperial", "Pacaran", "Quilmana", "San Antonio", "San Luis", "Santa Cruz de Flores", "Zuñiga"));
+            distritosPorProvincia.put("Caï¿½ete", Arrays.asList("-Seleccione-", "San Vicente", "Asia", "Calango", "Cerro Azul", "Chilca", "Coayllo", "Imperial", "Lunahuana", "Mala", "Nuevo Imperial", "Pacaran", "Quilmana", "San Antonio", "San Luis", "Santa Cruz de Flores", "Zuï¿½iga"));
             distritosPorProvincia.put("Huaral", Arrays.asList("-Seleccione-", "Huaral", "Atavillos Alto", "Atavillos Bajo", "Aucallama", "Chancay", "Ihuari", "Lampian", "Pacaraos", "San Miguel de Acos", "Santa Cruz de Andamarca", "Sumbilca", "Veintisiete de Noviembre"));
             distritosPorProvincia.put("Huarochiri", Arrays.asList("-Seleccione-", "Matucana", "Antioquia", "Callahuanca", "Carampoma", "Chicla", "Cuenca", "Huachupampa", "Huanza", "Huarochiri", "Lahuaytambo", "Langa", "Laraos", "Mariatana", "Ricardo Palma", "San Andres de Tupicocha", "San Antonio", "San Bartolome", "San Damian", "San Juan de Iris", "San Juan de Tantaranche", "San Lorenzo de Quinti", "San Mateo", "San Mateo de Otao", "San Pedro de Casta", "San Pedro de Huancayre", "Sangallaya", "Santa Cruz de Cocachacra", "Santa Eulalia", "Santiago de Anchucaya", "Santiago de Tuna", "Santo Domingo de los Olleros", "Surco"));
             distritosPorProvincia.put("Huaura", Arrays.asList("-Seleccione-", "Huacho", "Ambar", "Caleta de Carquin", "Checras", "Hualmay", "Huaura", "Leoncio Prado", "Paccho", "Santa Leonor", "Santa Maria", "Sayan", "Vegueta"));
             distritosPorProvincia.put("Lima", Arrays.asList("-Seleccione-", "Ancon", "Ate", "Barranco", "Brena", "Carabayllo", "Chaclacayo", "Chorrillos", "Cieneguilla", "Comas", "El Agustino", "Independencia", "Jesus Maria", "La Molina", "La Victoria", "Lima", "Lince", "Los Olivos", "Lurigancho-Chosica", "Lurin", "Magdalena del Mar", "Miraflores", "Pachacamac", "Pucusana", "Pueblo Libre", "Puente Piedra", "Punta Hermosa", "Punta Negra", "Rimac", "San Bartolo", "San Borja", "San Isidro", "San Juan de Lurigancho", "San Juan de Miraflores", "San Luis", "San Martin de Porres", "San Miguel", "Santa Anita", "Santa Maria del Mar", "Santa Rosa", "Santiago de Surco", "Surquillo", "Villa El Salvador", "Villa Maria del Triunfo"));
             distritosPorProvincia.put("Oyon", Arrays.asList("-Seleccione-", "Oyon", "Andajes", "Caujul", "Cochamarca", "Navan", "Pachangara"));
-            distritosPorProvincia.put("Yauyos", Arrays.asList("-Seleccione-", "Yauyos", "Alis", "Allauca", "Ayaviri", "Azangaro", "Cacra", "Carania", "Catahuasi", "Chocos", "Cochas", "Colonia", "Hongos", "Huampara", "Huancaya", "Huangascar", "Huantan", "Huañec", "Laraos", "Lincha", "Madean", "Miraflores", "Omas", "Putinza", "Quinches", "Quinocay", "San Joaquin", "San Pedro de Pilas", "Tanta", "Tauripampa", "Tomas", "Tupe", "Viñac", "Vitis", "Yauyos"));
+            distritosPorProvincia.put("Yauyos", Arrays.asList("-Seleccione-", "Yauyos", "Alis", "Allauca", "Ayaviri", "Azangaro", "Cacra", "Carania", "Catahuasi", "Chocos", "Cochas", "Colonia", "Hongos", "Huampara", "Huancaya", "Huangascar", "Huantan", "Huaï¿½ec", "Laraos", "Lincha", "Madean", "Miraflores", "Omas", "Putinza", "Quinches", "Quinocay", "San Joaquin", "San Pedro de Pilas", "Tanta", "Tauripampa", "Tomas", "Tupe", "Viï¿½ac", "Vitis", "Yauyos"));
             // Loreto
             distritosPorProvincia.put("Alto Amazonas", Arrays.asList("-Seleccione-", "Yurimaguas", "Balsapuerto", "Jeberos", "Lagunas", "Santa Cruz", "Teniente Cesar Lopez Rojas"));
             distritosPorProvincia.put("Loreto", Arrays.asList("-Seleccione-", "Nauta", "Parinari", "Tigre", "Trompeteros", "Urarinas"));
             distritosPorProvincia.put("Mariscal Ramon Castilla", Arrays.asList("-Seleccione-", "Caballococha", "Pebas", "San Pablo", "Yavari"));
-            distritosPorProvincia.put("Maynas", Arrays.asList("-Seleccione-", "Iquitos", "Alto Nanay", "Fernando Lores", "Indiana", "Las Amazonas", "Mazan", "Napo", "Punchana", "Torres Causana", "Belén"));
+            distritosPorProvincia.put("Maynas", Arrays.asList("-Seleccione-", "Iquitos", "Alto Nanay", "Fernando Lores", "Indiana", "Las Amazonas", "Mazan", "Napo", "Punchana", "Torres Causana", "Belï¿½n"));
             distritosPorProvincia.put("Requena", Arrays.asList("-Seleccione-", "Requena", "Alto Tapiche", "Capelo", "Emilio San Martin", "Maquia", "Puinahua", "Saquena", "Soplin", "Tapiche", "Jenaro Herrera", "Yaquerana"));
             distritosPorProvincia.put("Ucayali", Arrays.asList("-Seleccione-", "Contamana", "Inahuaya", "Padre Marquez", "Pampa Hermosa", "Sarayacu", "Vargas Guerra"));
             // Madre de Dios
             distritosPorProvincia.put("Manu", Arrays.asList("-Seleccione-", "Manu", "Fitzcarrald", "Madre de Dios", "Huepetuhe"));
-            distritosPorProvincia.put("Tahuamanu", Arrays.asList("-Seleccione-", "Iñapari", "Iberia", "Tahuamanu"));
+            distritosPorProvincia.put("Tahuamanu", Arrays.asList("-Seleccione-", "Iï¿½apari", "Iberia", "Tahuamanu"));
             distritosPorProvincia.put("Tambopata", Arrays.asList("-Seleccione-", "Tambopata", "Inambari", "Las Piedras", "Laberinto"));
             // Moquegua
             distritosPorProvincia.put("General Sanchez Cerro", Arrays.asList("-Seleccione-", "Omate", "Chojata", "Coalaque", "Ichuna", "La Capilla", "Lloque", "Matalaque", "Puquina", "Quinistaquillas", "Ubinas", "Yunga"));
@@ -559,16 +577,16 @@ public class ModEliminarPaciente extends javax.swing.JFrame {
             distritosPorProvincia.put("Paita", Arrays.asList("-Seleccione-", "Paita", "Amotape", "Arenal", "Colan", "El Tallan", "La Arena", "La Huaca", "Tamarindo", "Vichayal"));
             distritosPorProvincia.put("Sechura", Arrays.asList("-Seleccione-", "Sechura", "Bellavista de la Union", "Bernal", "Cristo Nos Valga", "Vice", "Rinconada Llicuar", "El Alto de la Alianza", "Los Incas", "Cerro Colorado"));
             distritosPorProvincia.put("Sullana", Arrays.asList("-Seleccione-", "Sullana", "Bellavista", "Ignacio Escudero", "Lancones", "Marcavelica", "Miguel Checa", "Querecotillo", "Salitral", "El Alto de la Alianza", "Los Incas", "Cerro Colorado"));
-            distritosPorProvincia.put("Talara", Arrays.asList("-Seleccione-", "Pariñas", "El Alto de la Alianza", "Los Incas", "Cerro Colorado"));
+            distritosPorProvincia.put("Talara", Arrays.asList("-Seleccione-", "Pariï¿½as", "El Alto de la Alianza", "Los Incas", "Cerro Colorado"));
             // Puno
-            distritosPorProvincia.put("Puno", Arrays.asList("-Seleccione-", "Puno", "Acora", "Amantani", "Atuncolla", "Capachica", "Chucuito", "Coata", "Huata", "Mañazo", "Paucarcolla", "Pichacani", "Plateria", "San Antonio", "Tiquillaca", "Vilque"));
-            distritosPorProvincia.put("Azangaro", Arrays.asList("-Seleccione-", "Azangaro", "Achaya", "Arapa", "Asillo", "Caminaca", "Chupa", "Jose Domingo Choquehuanca", "Muñani", "Potoni", "Saman", "San Anton", "San Jose", "San Juan de Salinas", "Santiago de Pupuja", "Tirapata"));
+            distritosPorProvincia.put("Puno", Arrays.asList("-Seleccione-", "Puno", "Acora", "Amantani", "Atuncolla", "Capachica", "Chucuito", "Coata", "Huata", "Maï¿½azo", "Paucarcolla", "Pichacani", "Plateria", "San Antonio", "Tiquillaca", "Vilque"));
+            distritosPorProvincia.put("Azangaro", Arrays.asList("-Seleccione-", "Azangaro", "Achaya", "Arapa", "Asillo", "Caminaca", "Chupa", "Jose Domingo Choquehuanca", "Muï¿½ani", "Potoni", "Saman", "San Anton", "San Jose", "San Juan de Salinas", "Santiago de Pupuja", "Tirapata"));
             distritosPorProvincia.put("Carabaya", Arrays.asList("-Seleccione-", "Macusani", "Ajoyani", "Ayapata", "Coasa", "Corani", "Crucero", "Ituata", "Ollachea", "San Gaban", "Usicayos"));
             distritosPorProvincia.put("Chucuito", Arrays.asList("-Seleccione-", "Juli", "Desaguadero", "Huacullani", "Kelluyo", "Pisacoma", "Pomata", "Zepita"));
             distritosPorProvincia.put("El Collao", Arrays.asList("-Seleccione-", "Ilave", "Capazo", "Pilcuyo", "Santa Rosa"));
             distritosPorProvincia.put("Huancane", Arrays.asList("-Seleccione-", "Huancane", "Cojata", "Huatasani", "Inchupalla", "Pusi", "Rosaspata", "Taraco", "Vilque Chico"));
             distritosPorProvincia.put("Lampa", Arrays.asList("-Seleccione-", "Lampa", "Cabanilla", "Calapuja", "Nicasio", "Ocuviri", "Palca", "Paratia", "Pucara", "Santa Lucia", "Vilavila"));
-            distritosPorProvincia.put("Melgar", Arrays.asList("-Seleccione-", "Ayaviri", "Antauta", "Cupi", "Llalli", "Macari", "Nuñoa", "Orurillo", "Santa Rosa", "Umachiri"));
+            distritosPorProvincia.put("Melgar", Arrays.asList("-Seleccione-", "Ayaviri", "Antauta", "Cupi", "Llalli", "Macari", "Nuï¿½oa", "Orurillo", "Santa Rosa", "Umachiri"));
             distritosPorProvincia.put("Moho", Arrays.asList("-Seleccione-", "Moho", "Conima", "Huayrapata", "Tilali"));
             distritosPorProvincia.put("San Antonio de Putina", Arrays.asList("-Seleccione-", "Putina"));
             distritosPorProvincia.put("San Roman", Arrays.asList("-Seleccione-", "Juliaca", "Cabana", "Cabanillas", "Caracoto"));
@@ -579,9 +597,9 @@ public class ModEliminarPaciente extends javax.swing.JFrame {
             distritosPorProvincia.put("Bellavista", Arrays.asList("-Seleccione-", "Bellavista", "Alto Biavo", "Bajo Biavo", "Huallaga", "San Pablo", "San Rafael"));
             distritosPorProvincia.put("El Dorado", Arrays.asList("-Seleccione-", "San Jose de Sisa", "Agua Blanca", "San Martin", "Santa Rosa", "Shatoja"));
             distritosPorProvincia.put("Huallaga", Arrays.asList("-Seleccione-", "Saposoa", "Alto Saposoa", "El Eslabon", "Piscoyacu", "Sacanche", "Tingo de Saposoa", "Alto Saposoa"));
-            distritosPorProvincia.put("Lamas", Arrays.asList("-Seleccione-", "Lamas", "Alonso de Alvarado", "Barranquita", "Caynarachi", "Cuñumbuqui", "Pinto Recodo", "Rumisapa", "San Roque de Cumbaza", "Shanao", "Tabalosos", "Zapatero"));
+            distritosPorProvincia.put("Lamas", Arrays.asList("-Seleccione-", "Lamas", "Alonso de Alvarado", "Barranquita", "Caynarachi", "Cuï¿½umbuqui", "Pinto Recodo", "Rumisapa", "San Roque de Cumbaza", "Shanao", "Tabalosos", "Zapatero"));
             distritosPorProvincia.put("Mariscal Caceres", Arrays.asList("-Seleccione-", "Juanjui", "Campanilla", "Huicungo", "Pachiza", "Pajarillo"));
-            distritosPorProvincia.put("Picota", Arrays.asList("-Seleccione-", "Picota", "Buenos Aires", "Caspisapa", "Pilluana", "Pucacaca", "San Cristobal", "San Hilarión", "Shamboyacu", "Tingo de Ponasa", "Tres Unidos"));
+            distritosPorProvincia.put("Picota", Arrays.asList("-Seleccione-", "Picota", "Buenos Aires", "Caspisapa", "Pilluana", "Pucacaca", "San Cristobal", "San Hilariï¿½n", "Shamboyacu", "Tingo de Ponasa", "Tres Unidos"));
             distritosPorProvincia.put("Rioja", Arrays.asList("-Seleccione-", "Rioja", "Awajun", "Elias Soplin Vargas", "Nueva Cajamarca", "Pardo Miguel", "Posic", "San Fernando", "Yorongos", "Yuracyacu"));
             distritosPorProvincia.put("San Martin", Arrays.asList("-Seleccione-", "Tarapoto", "Alberto Leveau", "Cacatachi", "Chazuta", "Chipurana", "El Porvenir", "Huimbayoc", "Juan Guerra", "La Banda de Shilcayo", "Morales", "Papaplaya", "San Antonio", "Sauce", "Shapaja"));
             distritosPorProvincia.put("Tocache", Arrays.asList("-Seleccione-", "Tocache", "Nuevo Progreso", "Polvora", "Shunte", "Uchiza"));
@@ -618,6 +636,10 @@ public class ModEliminarPaciente extends javax.swing.JFrame {
         }*/
     }//GEN-LAST:event_cboProvinciaItemStateChanged
 
+    private void btnBuscarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPacienteActionPerformed
+        obtenerYMostrarPacientes();
+    }//GEN-LAST:event_btnBuscarPacienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -652,8 +674,43 @@ public class ModEliminarPaciente extends javax.swing.JFrame {
             }
         });
     }
+    
+    PacienteController pacienteController = new PacienteController();
+    
+    private void obtenerYMostrarPacientes(){
+        try{
+            DefaultTableModel model = (DefaultTableModel) TablePaciente.getModel();
+            model.setRowCount(0);
+            
+            List<Paciente> pacientes = pacienteController.obtenerTodosLosPacientes();
+            for (Paciente paciente : pacientes){
+                Object[] rowData = {
+                    paciente.getDocumento(),
+                    paciente.getNombre(),
+                    paciente.getApellido(),
+                    paciente.getSeguroSocial(),
+                    paciente.getSexo(),
+                    paciente.getTelefono(),
+                    paciente.getCorreoElectronico(),
+                    paciente.getDireccion(),
+                    paciente.getDepartamento(),
+                    paciente.getProvincia(),
+                    paciente.getDistrito(),
+                    paciente.getEstadoCivil(),
+                    paciente.getFechaNacimiento(),
+                    paciente.getGrupoSanguineo()
+                };
+                model.addRow(rowData);
+            }
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Error al obtener los pacientes", "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TablePaciente;
     private javax.swing.JButton btnBuscarPaciente;
     private javax.swing.JButton btnEliminarPaciente;
     private javax.swing.JButton btnModificarPaciente;
@@ -684,7 +741,6 @@ public class ModEliminarPaciente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtApellidoM;
     private javax.swing.JTextField txtApellidoP;
     private javax.swing.JTextField txtCorreoE;

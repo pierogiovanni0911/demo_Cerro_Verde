@@ -1,22 +1,37 @@
 package com.saluddigital.cerroverde.controller;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.saluddigital.cerroverde.dao.ConnectionFactory;
+import com.saluddigital.cerroverde.dao.PacienteDAO;
 import com.saluddigital.cerroverde.model.Paciente;
 
 public class PacienteController {
-    /*private List<Paciente> pacientes;
+    private final PacienteDAO pacienteDAO;
 
-    public GestorPaciente() {
-        pacientes = new ArrayList<Paciente>();
+    public PacienteController() {
+        this.pacienteDAO = new PacienteDAO(new ConnectionFactory().realizarConexion());
     }
 
-    public void agregarPaciente(Paciente paciente) {
-        pacientes.add(paciente);
+    public List<Paciente> obtenerTodosLosPacientes() throws SQLException {
+        return pacienteDAO.obtenerTodosLosPacientes();
     }
 
-    public void eliminarPaciente(Paciente paciente) {
+    public void guardarPaciente(Paciente paciente) throws SQLException {
+        pacienteDAO.insertarPaciente(paciente);
+    }
+
+    public Paciente obtenerPacientePorDocumento(String documento) throws SQLException {
+        return pacienteDAO.obtenerPacientePorDocumento(documento);
+    }
+
+    public void actualizarPaciente(Paciente paciente) throws SQLException {
+        pacienteDAO.actualizarPaciente(paciente);
+    }
+
+    /*public void eliminarPaciente(Paciente paciente) {
         pacientes.remove(paciente);
     }
 
@@ -27,9 +42,5 @@ public class PacienteController {
             }
         }
         return null;
-    }
-
-    public List<Paciente> obtenerPacientes() {
-        return pacientes;
     }*/
 }

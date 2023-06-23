@@ -10,7 +10,7 @@ public class Paciente extends Persona {
     public Paciente(int idPaciente, String grupoSanguineo, HistorialMedico historialMedico, int idPersona, String documento, String nombre,
                     String apellido, String seguroSocial, String sexo, String telefono, String correoElectronico, String direccion,
                     String departamento, String provincia, String distrito, String estadoCivil, Date fechaNacimiento) {
-        super(documento, nombre, apellido, seguroSocial, sexo, telefono, correoElectronico, direccion, departamento,
+        super(idPersona, documento, nombre, apellido, seguroSocial, sexo, telefono, correoElectronico, direccion, departamento,
             provincia, distrito, estadoCivil, fechaNacimiento);
         this.idPaciente = idPaciente;
         this.grupoSanguineo = grupoSanguineo;
@@ -36,7 +36,7 @@ public class Paciente extends Persona {
         this.grupoSanguineo = grupoSanguineo;
     }
 
-    public HistorialMedico getHistorialMedico(HistorialMedico historialMedico) {
+    public HistorialMedico getHistorialMedico() {
         return historialMedico;
     }
 
@@ -48,6 +48,7 @@ public class Paciente extends Persona {
     public String toString(){
         return "Paciente{" +
             "idPaciente=" + idPaciente +
+            ", idPersona=" + getIdPersona() +
             ", documento='" + getDocumento() + '\'' +
             ", nombre='" + getNombre() + '\'' +
             ", apellido='" + getApellido() + '\'' +

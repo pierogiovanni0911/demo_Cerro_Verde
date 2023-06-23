@@ -11,10 +11,10 @@ public class Empleado extends Persona{
     private String claveCentroSalud;
 
     public Empleado(int idEmpleado, Date fechaIngreso, String area, String cargo, String correoCentroSalud, 
-                    String claveCentroSalud, String documento, String seguroSocial, String nombre, String apellido,
+                    String claveCentroSalud, int idPersona, String documento, String seguroSocial, String nombre, String apellido,
                     String sexo, String telefono, String correoElectronico, String direccion, String departamento,
                     String provincia, String distrito, String estadoCivil, Date fechaNacimiento) {
-        super(documento, nombre, apellido, seguroSocial, sexo, telefono, correoElectronico, direccion, departamento,
+        super(idPersona, documento, nombre, apellido, seguroSocial, sexo, telefono, correoElectronico, direccion, departamento,
             provincia, distrito, estadoCivil, fechaNacimiento);
         this.idEmpleado = idEmpleado;
         this.fechaIngreso = fechaIngreso;

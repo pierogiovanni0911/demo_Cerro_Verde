@@ -8,10 +8,10 @@ public class Medico extends Empleado{
     private String especialidad;
 
     public Medico(int idMedico, String numConsultorio, String especialidad, int idEmpleado, Date fechaIngreso, 
-                    String area, String cargo, String correoCentroSalud, String claveCentroSalud, String documento,
+                    String area, String cargo, String correoCentroSalud, String claveCentroSalud, int idPersona, String documento,
                     String seguroSocial, String nombre, String apellido, String sexo, String telefono, String correoElectronico,
                     String direccion, String departamento, String provincia, String distrito, String estadoCivil, Date fechaNacimiento) {
-        super(idEmpleado, fechaIngreso, area, cargo, correoCentroSalud, claveCentroSalud, documento, seguroSocial, nombre, 
+        super(idEmpleado, fechaIngreso, area, cargo, correoCentroSalud, claveCentroSalud, idPersona, documento, seguroSocial, nombre, 
                 apellido, sexo, telefono, correoElectronico, direccion, departamento, provincia, distrito, estadoCivil, fechaNacimiento);
         this.idMedico = idMedico;
         this.numConsultorio = numConsultorio;
