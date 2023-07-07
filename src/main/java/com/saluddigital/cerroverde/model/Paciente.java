@@ -36,7 +36,7 @@ public class Paciente extends Persona {
         this.grupoSanguineo = grupoSanguineo;
     }
 
-    public HistorialMedico getHistorialMedico() {
+    public HistorialMedico gethistorialMedico() {
         return historialMedico;
     }
 
@@ -63,7 +63,7 @@ public class Paciente extends Persona {
             ", estadoCivil='" + getEstadoCivil() + '\'' +
             ", fechaNacimiento=" + getFechaNacimiento() +
             ", grupoSanguineo='" + grupoSanguineo + '\'' +
-            ", historialMedico=" + historialMedico +
+            ", historialMedico=" + historialMedico.toString() +
             '}';
 
     }

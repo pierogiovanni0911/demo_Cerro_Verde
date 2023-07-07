@@ -199,6 +199,20 @@ public class PersonaDAO {
     }
 
     /**
+     * Permite eliminar el modelo de datos de la Persona, en la tabla de "persona"
+     * 
+     * @param idPersona - Identificador de la persona a eliminar
+     * @throws SQLException
+     */
+    public int eliminarPersona(int idPersona) throws SQLException {
+        String query = "DELETE FROM persona WHERE id_persona = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, idPersona);
+            return statement.executeUpdate();
+        }
+    }
+
+    /**
      * Permite obtener el último id de la tabla persona para poder insertar en la 
      * tabla de usuario
      * @return

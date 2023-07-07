@@ -60,7 +60,7 @@ public class HistorialMedico {
         return "HistorialMedico{" +
             "idHistoria=" + idHistoria +
             ", antecedentesMedicos='" + antecedentesMedicos + '\'' +
-            ", receta='" + receta + '\'' +
+            ", receta='" + receta.toString() + '\'' +
             ", diagnostico='" + diagnostico + '\'' +
             ", tratamiento='" + tratamiento + '\'' +
             '}';

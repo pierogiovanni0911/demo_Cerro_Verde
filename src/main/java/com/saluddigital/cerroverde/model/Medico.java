@@ -17,6 +17,9 @@ public class Medico extends Empleado{
         this.numConsultorio = numConsultorio;
         this.especialidad = especialidad;
     }
+
+    public Medico() {
+    }
     
     public int getIdMedico() {
         return idMedico;

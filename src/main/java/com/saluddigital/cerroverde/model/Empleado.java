@@ -7,11 +7,11 @@ public class Empleado extends Persona{
     private Date fechaIngreso;
     private String area;
     private String cargo;
-    private String correoCentroSalud;
-    private String claveCentroSalud;
+    private String username;
+    private String password;
 
-    public Empleado(int idEmpleado, Date fechaIngreso, String area, String cargo, String correoCentroSalud, 
-                    String claveCentroSalud, int idPersona, String documento, String seguroSocial, String nombre, String apellido,
+    public Empleado(int idEmpleado, Date fechaIngreso, String area, String cargo, String username, 
+                    String password, int idPersona, String documento, String seguroSocial, String nombre, String apellido,
                     String sexo, String telefono, String correoElectronico, String direccion, String departamento,
                     String provincia, String distrito, String estadoCivil, Date fechaNacimiento) {
         super(idPersona, documento, nombre, apellido, seguroSocial, sexo, telefono, correoElectronico, direccion, departamento,
@@ -20,8 +20,11 @@ public class Empleado extends Persona{
         this.fechaIngreso = fechaIngreso;
         this.area = area;
         this.cargo = cargo;
-        this.correoCentroSalud = correoCentroSalud;
-        this.claveCentroSalud = claveCentroSalud;
+        this.username = username;
+        this.password = password;
+    }
+
+    public Empleado(){
     }
 
     public int getIdEmpleado() {
@@ -56,19 +59,31 @@ public class Empleado extends Persona{
         this.cargo = cargo;
     }
 
-    public String getCorreoCentroSalud() {
-        return correoCentroSalud;
+    public String getUsername() {
+        return username;
     }
 
-    public void setCorreoCentroSalud(String correoCentroSalud) {
-        this.correoCentroSalud = correoCentroSalud;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getClaveCentroSalud() {
-        return claveCentroSalud;
+    public String getPassword() {
+        return password;
     }
 
-    public void setClaveCentroSalud(String claveCentroSalud) {
-        this.claveCentroSalud = claveCentroSalud;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public String toString(){
+        return "Empleado{" +
+                "idEmpleado=" + idEmpleado +
+                ", fechaIngreso=" + fechaIngreso +
+                ", area='" + area + '\'' +
+                ", cargo='" + cargo + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

@@ -17,6 +17,9 @@ public class Receta {
         this.medico = medico;
     }
 
+    public Receta() {
+    }
+
     public int getIdReceta() {
         return idReceta;
     }

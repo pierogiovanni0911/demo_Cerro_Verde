@@ -19,7 +19,7 @@ public class PacienteController {
         return pacienteDAO.obtenerTodosLosPacientes();
     }
 
-    public void guardarPaciente(Paciente paciente) throws SQLException {
+    public void insertarPaciente(Paciente paciente) throws SQLException {
         pacienteDAO.insertarPaciente(paciente);
     }
 
@@ -27,20 +27,19 @@ public class PacienteController {
         return pacienteDAO.obtenerPacientePorDocumento(documento);
     }
 
+    public List<Paciente> obtenerPacientesPorApellido(String apellido) throws SQLException {
+        return pacienteDAO.obtenerPacientesPorApellido(apellido);
+    }
+
     public void actualizarPaciente(Paciente paciente) throws SQLException {
         pacienteDAO.actualizarPaciente(paciente);
     }
 
-    /*public void eliminarPaciente(Paciente paciente) {
-        pacientes.remove(paciente);
+    public void eliminarPaciente(Paciente paciente) throws SQLException {
+        pacienteDAO.eliminarPaciente(paciente.getIdPaciente());
     }
 
-    public Paciente buscarPaciente(String documento) {
-        for (Paciente paciente : pacientes) {
-            if (paciente.getDocumento().equals(documento)) {
-                return paciente;
-            }
-        }
-        return null;
-    }*/
+    public void eliminarPacienteTotal(int idPaciente) throws SQLException {
+        pacienteDAO.eliminarPacienteTotal(idPaciente);
+    }
 }
